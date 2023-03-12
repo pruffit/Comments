@@ -1,0 +1,24 @@
+.input{
+	border: 5px solid $orange;
+	resize: none;
+	background-color: $orange;
+	border-radius: 15px;
+	height: 60px;
+	padding: 0 30px;
+	width: 100%;
+	&::placeholder{
+		font-weight: 600;
+		font-size: 18px;
+		line-height: 1;
+		color: $white;
+		text-transform: uppercase;
+	}
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 1;
+	color: $white;
+}
+.textarea{
+	height: 120px;
+	padding: 30px;
+}

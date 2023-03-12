@@ -1,0 +1,41 @@
+.form{
+	border: $orange 5px solid;
+	border-radius: 15px;
+	padding: 30px;
+	margin-bottom: 30px;
+	&__row-1{
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		grid-gap: 30px;
+		margin-bottom: 30px;
+	}
+	&__row-3{
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-gap: 30px;
+	}
+	&__wrapper{
+		position: relative;
+		.error{
+			position: absolute;
+			top: -27px;
+			display: flex;
+			align-items: center;
+			font-weight: 600;
+			font-size: 18px;
+			line-height: 1.5;
+			color: $error;
+			white-space: nowrap;
+			+input, +textarea{
+				border: 5px solid $error;
+			}
+			svg{
+				width: 18px;
+				height: 18px;
+				fill: $error;
+				flex: 0 0 auto;
+				margin-left: 8px;
+			}
+		}
+	}
+}
