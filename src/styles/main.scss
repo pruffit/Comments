@@ -29,6 +29,7 @@ body{
 		color: $white;
 		line-height: 1;
 		white-space: nowrap;
+		pointer-events: none;
 		svg{
 			width: 18px;
 			height: 18px;
