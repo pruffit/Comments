@@ -17,22 +17,25 @@
 	&__wrapper{
 		position: relative;
 		.error{
+			&.visible{
+				display: flex;
+				+input, +textarea{
+					border: 5px solid $error;
+					&::placeholder{
+						color: $error;
+					}
+				}
+			}
 			pointer-events: none;
 			position: absolute;
 			top: -27px;
-			display: flex;
+			display: none;
 			align-items: center;
 			font-weight: 600;
 			font-size: 18px;
 			line-height: 1.5;
 			color: $error;
 			white-space: nowrap;
-			+input, +textarea{
-				border: 5px solid $error;
-				&::placeholder{
-					color: $error;
-				}
-			}
 			svg{
 				width: 24px;
 				height: 24px;

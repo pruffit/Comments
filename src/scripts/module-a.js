@@ -49,7 +49,6 @@
 			deleteButtons[i].addEventListener('click', e => {
 				e.preventDefault;
 				const This = e.currentTarget;
-				console.log(This);
 				let elementId = This.dataset.id;
 				removeComment(elementId);
 			});
@@ -92,7 +91,6 @@
 		const dateNow = b.getDate();
 		const hour = a.getHours();
 		const min = a.getMinutes();
-		console.log(+date);
 		const time = date + ' ' + month + ' ' + year;
 		if((date === dateNow) && (month === monthNow) && (year === yearNow)) {
 			return `сегодня, ${hour}:${min}`;
@@ -115,23 +113,100 @@
 
 	loadComments();
 
-	document.getElementById('add').onclick = e => {
-		e.preventDefault;
-		let commentName = document.getElementById('name');
-		let commentText = document.getElementById('text');
-		let commentDate = document.getElementById('date');
-		let newDate = new Date(commentDate.value)
-		let comment = {
-			name: commentName.value,
-			text: commentText.value,
-			time: commentDate.value ? Math.floor(Date.parse(newDate)/1000) : Math.floor(Date.now()/1000),
-			liked: false
+	const validateField = (field) => {
+		if (!field.checkValidity()) {
+			field.previousElementSibling.classList.add('visible');
+			field.previousElementSibling.textContent = field.validationMessage;
+			return false;
+		} else {
+			field.previousElementSibling.classList.remove('visible');
+			field.previousElementSibling.textContent = '';
+			return true;
 		}
-		commentName.value = '';
-		commentText.value = '';
-		commentDate.value = '';
-		comments.push(comment);
-		saveComments();
-		showComments();
 	}
+
+	const validateForm = (form) => {
+		let valid = true;
+		if (!validateField(form.elements.name)) {
+			valid = false;
+		}
+
+		if (!validateField(form.elements.text)) {
+			valid = false;
+		}
+
+		return valid;
+	}
+
+	const validateName = (form) => {
+		let valid = true;
+
+		if (!validateField(form.elements.name)) {
+			valid = false;
+		}
+
+		return valid;
+	}
+
+	const validateText = (form) => {
+		let valid = true;
+
+		if (!validateField(form.elements.text)) {
+			valid = false;
+		}
+
+		return valid;
+	} 
+
+	document.getElementById('name').addEventListener('input', () => {
+		validateName(document.getElementById('form'));
+	});
+
+	document.getElementById('text').addEventListener('input', () => {
+		validateText(document.getElementById('form'));
+	});
+
+	document.getElementById('send').addEventListener('click',  e => {
+		e.preventDefault;
+		if(validateForm(document.getElementById('form'))) {
+			let commentName = document.getElementById('name');
+			let commentText = document.getElementById('text');
+			let commentDate = document.getElementById('date');
+			let newDate = new Date(commentDate.value)
+			let comment = {
+				name: commentName.value,
+				text: commentText.value,
+				time: commentDate.value ? Math.floor(Date.parse(newDate)/1000) : Math.floor(Date.now()/1000),
+				liked: false
+			}
+			commentName.value = '';
+			commentText.value = '';
+			commentDate.value = '';
+			comments.push(comment);
+			saveComments();
+			showComments();
+		}
+	});
+
+	document.getElementById('send').addEventListener('keyup',  e => {
+		e.preventDefault;
+		if(validateForm(document.getElementById('form'))) {
+			let commentName = document.getElementById('name');
+			let commentText = document.getElementById('text');
+			let commentDate = document.getElementById('date');
+			let newDate = new Date(commentDate.value)
+			let comment = {
+				name: commentName.value,
+				text: commentText.value,
+				time: commentDate.value ? Math.floor(Date.parse(newDate)/1000) : Math.floor(Date.now()/1000),
+				liked: false
+			}
+			commentName.value = '';
+			commentText.value = '';
+			commentDate.value = '';
+			comments.push(comment);
+			saveComments();
+			showComments();
+		}
+	});
 })()
