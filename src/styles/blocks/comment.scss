@@ -1,49 +1,68 @@
 .comment{
 	overflow: auto;
-	height: calc(100vh - 120px - 310px);
+	height: calc(100vh - 70px - 400px);
 	border-radius: 15px;
-	&::-webkit-scrollbar {
-		width: 14px;/* ширина scrollbar */
-	}
-	&::-webkit-scrollbar-track {
-		background: transparent;/* цвет дорожки */
-	}
-	&::-webkit-scrollbar-thumb {
-		background-color: $orange;/* цвет плашки */
-		border-radius: 10px;/* закругления плашки */
-		border: 5px solid $white;
+	@include _Tablet{
+		height: calc(100vh - 120px - 310px);
+		&::-webkit-scrollbar {
+			width: 14px;/* ширина scrollbar */
+		}
+		&::-webkit-scrollbar-track {
+			background: transparent;/* цвет дорожки */
+		}
+		&::-webkit-scrollbar-thumb {
+			background-color: $orange;/* цвет плашки */
+			border-radius: 10px;/* закругления плашки */
+			border: 5px solid $white;
+		}
 	}
 	&__item{
 		position: relative;
 		background-color: $orange;
 		min-height: 80px;
 		border-radius: 15px;
-		padding: 30px 30px 12px 30px;
+		padding: 10px 10px 10px 10px;
+		@include _Tablet{
+			padding: 30px 30px 12px 30px;
+		}
 		&:not(:last-child){
-			margin-bottom: 30px;
+			margin-bottom: 10px;
+			@include _Tablet{
+				margin-bottom: 30px;
+			}
 		}
 		.date{
 			position: absolute;
-			bottom: 12px;
-			right: 30px;
+			bottom: 10px;
+			right: 10px;
 			font-weight: 600;
 			font-size: 14px;
 			line-height: 1;
 			color: $white;
+			@include _Tablet{
+				bottom: 12px;
+				right: 30px;
+			}
 		}
 		.name{
 			font-weight: 600;
-			font-size: 18px;
+			font-size: 16px;
 			line-height: 1;
 			color: $white;
 			margin-bottom: 10px;
+			@include _Tablet{
+				font-size: 18px;
+			}
 		}
 		.text{
 			font-weight: 600;
 			font-size: 14px;
 			line-height: 1.5;
 			color: $white;
-			margin-bottom: 12px;
+			margin-bottom: 10px;
+			@include _Tablet{
+				margin-bottom: 12px;
+			}
 		}
 		.control{
 			display: flex;
@@ -53,13 +72,20 @@
 					display: none;
 				}
 				&:not(:last-child){
-					margin-right: 12px;
+					margin-right: 10px;
+					@include _Tablet{
+						margin-right: 12px;
+					}
 				}
 				svg{
-					width: 30px;
-					height: 30px;
+					width: 20px;
+					height: 20px;
 					fill: $white;
 					transition: fill .2s ease-in-out;
+					@include _Tablet{
+						width: 30px;
+						height: 30px;
+					}
 					&:hover{
 						fill: $error;
 					}

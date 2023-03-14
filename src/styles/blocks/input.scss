@@ -4,21 +4,31 @@
 	background-color: $orange;
 	border-radius: 15px;
 	height: 60px;
-	padding: 0 30px;
+	padding: 0 10px;
 	width: 100%;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 1;
+	color: $white;
+	@include _Tablet{
+		padding: 0 30px;
+		font-size: 18px;
+	}
 	&::placeholder{
 		font-weight: 600;
-		font-size: 18px;
+		font-size: 16px;
 		line-height: 1;
 		color: $white;
 		text-transform: uppercase;
+		@include _Tablet{
+			font-size: 18px;
+		}
 	}
-	font-weight: 600;
-	font-size: 18px;
-	line-height: 1;
-	color: $white;
 }
 .textarea{
 	height: 120px;
-	padding: 30px;
+	padding: 10px;
+	@include _Tablet{
+		padding: 30px;
+	}
 }
